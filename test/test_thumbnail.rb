@@ -4,12 +4,13 @@ require 'open-uri'
 
 class Test_Thumbnail < Test::Unit::TestCase
   def setup
+    @id = "sm2407507"
     @client = Nicovideo::Thumbnail.new
   end
 
   def test_get
-    thumbnail = @client.get("sm2424611")
-    assert("sm2424611", thumbnail["video_id"])
+    thumbnail = @client.get(@id)
+    assert(@id, thumbnail["video_id"])
   end
   
   def test_get_nonexistent_video
@@ -23,7 +24,7 @@ class Test_Thumbnail < Test::Unit::TestCase
       m.def(:open) { sleep 30 }
       m.swap {
         assert_raise(TimeoutError) {
-          @client.get("sm2424611")
+          @client.get(@id)
         }
       }
     end
