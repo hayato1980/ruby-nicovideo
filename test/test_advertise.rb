@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require File.dirname(__FILE__) + '/test_helper.rb'
 require 'kagemusha'
 require 'open-uri'
